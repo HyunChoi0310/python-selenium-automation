@@ -1,23 +1,20 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 # init driver
-driver = webdriver.Chrome(executable_path="//chromedriver.exe")
+driver = webdriver.Chrome(executable_path="C:/ChoiLearning/Automation/python-selenium-automation/chromedriver.exe")
 driver.maximize_window()
 # open the url
-driver.get('www.amazon.com')
-# Expected & Actual
-ExpectedTitle = "Amazon Sign-In"
-ActualTitle = driver.getTitle()
+driver.get('https://www.amazon.com/')
+
 # Sign in Sign up page
-driver.find_element(By.LINK_TEXT, "//h2[text()='Your Account']").click()
-driver.find_element(By.LINK_TEXT, "//h2[text()='Your Orders']").click()
+driver.find_element(By.ID, 'nav-orders').click()
+expected_title = 'Sign-In'
+# Expected & Actual
+actual_title = driver.findElement(By.XPATH, "//h1[@class='a-spacing-small']").text
+assert actual_title == expected_title, f'Expected {expected_title} but got{actual_title}'
 
-assert ActualTitle == ExpectedTitle, f'Expected {ExpectedTitle} but got{ActualTitle}'
-print("Verified for Signing in")
+#email is present
+assert driver.findElement(By.ID, 'ap_email').isDisplayed
 
-email_p = driver.findElement(By.xpath("//input[@type='ap_email']")).isEnabled
-if email_p:
-print('Email is present')
 
-driver.close();
 driver.quit();

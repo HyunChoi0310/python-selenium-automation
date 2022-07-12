@@ -1,24 +1,24 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 # init driver
-driver = webdriver.Chrome(executable_path="//chromedriver.exe")
+driver = webdriver.Chrome(executable_path="C:/ChoiLearning/Automation/python-selenium-automation/chromedriver.exe")
 driver.maximize_window()
 # open the url
-driver.get('')
+driver.get('https://www.amazon.com/')
 # Amazon logo, By ID
-driver.find_element(By.XPATH, "//a[href='ap_frn_logo']")
+driver.find_element(By.XPATH, "//a[@href='/ref=ap_frn_logo']")
 # email field, By ID
-driver.find_element(By.XPATH, "//input[@label for='ap_email']")
+driver.find_element(By.ID, "//input[@id='ap_email']")
 # Continue button By ID
-driver.find_element(By.XPATH, "//a[@aria-labelledby='continue-announce']")
+driver.find_element(By.ID, "//input[@id='continue']")
 # Need help link
-driver.find_element(By.LINK_TEXT, "//h2[text()='Need help?']")
+driver.find_element(By.LINK_TEXT, "//span[contains(text(), 'Need help?')]")
 # Create your Amazon account button, By ID
-driver.find_element(By.ID, "//a[@href='createAccountSubmit']")
-# *Conditions of use link By LINK_TEXT
-driver.find_element(By.LINK_TEXT, "//h2[text()='Conditions of Use']")
-# *Privacy Notice link By LINK_TEXT
-driver.find_element(By.LINK_TEXT, "//h2[text()='Privacy Notice']")
+driver.find_element(By.ID, "//a[@id='createAccountSubmit']")
+# *Conditions of use link By XPATH
+driver.find_element(By.XPATH, "//a[@href='/gp/help/customer/display.html/ref=ap_desktop_footer_cou?ie=UTF8&nodeId=508088']")
+# *Privacy Notice link By XPATH
+driver.find_element(By.XPATH, "//a[@href='/gp/help/customer/display.html/ref=ap_desktop_footer_privacy_notice?ie=UTF8&nodeId=468496']")
 
 print('Test Passed')
 driver.quit()
