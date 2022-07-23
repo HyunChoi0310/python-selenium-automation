@@ -25,5 +25,8 @@ driver.find_element(By.CSS_SELECTOR, "input#continue")
 driver.find_element(By.CSS_SELECTOR, "a[href='https://www.amazon.com/gp/help/customer/display.html/ref=ap_register_notification_condition_of_use?ie=UTF8&nodeId=508088']")
 #notice
 driver.find_element(By.CSS_SELECTOR, "https://www.amazon.com/gp/help/customer/display.html/ref=ap_register_notification_privacy_notice?ie=UTF8&nodeId=468496']")
+#signin
+driver.find_element(By.CSS_SELECTOR, "a-link-emphasis")
+
 print('Test Passed')
 driver.quit()

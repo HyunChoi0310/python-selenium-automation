@@ -6,7 +6,7 @@ driver.maximize_window()
 # open the url
 driver.get('https://www.amazon.com/')
 # Amazon logo, By ID
-driver.find_element(By.XPATH, "//a[@href='/ref=ap_frn_logo']")
+driver.find_element(By.CSS_SELECTOR, " ")
 # email field, By ID
 driver.find_element(By.ID, "//input[@id='ap_email']")
 # Continue button By ID

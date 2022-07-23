@@ -7,14 +7,14 @@ driver.maximize_window()
 driver.get('https://www.amazon.com/')
 
 # Sign in Sign up page
-driver.find_element(By.ID, 'nav-orders').click()
+driver.find_element(By.CSS_SELECTOR, "#nav-orders").click()
 expected_title = 'Sign-In'
 # Expected & Actual
-actual_title = driver.findElement(By.XPATH, "//h1[@class='a-spacing-small']").text
+actual_title = driver.find_element(By.CSS_SELECTOR, "h1.a-spacing-small").text
 assert actual_title == expected_title, f'Expected {expected_title} but got{actual_title}'
 
 #email is present
-assert driver.findElement(By.ID, 'ap_email').isDisplayed
+assert driver.find_element(By.CSS_SELECTOR, "#ap_email").is_displayed()
 
 
 driver.quit();
