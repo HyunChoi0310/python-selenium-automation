@@ -1,4 +1,4 @@
-# Created by Svetlana at 4/4/19
+# Created by Hyun at 2/09/23
 Feature: Test Scenarios for Search functionality
 
   Scenario: User can search for a product
