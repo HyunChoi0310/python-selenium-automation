@@ -3,6 +3,6 @@ Feature: Test scenario of amazon cart is empty
   # Enter feature description here
 
   Scenario: verify amazon cart is empty
-    Given Open https://www.amazon.com
+    Given Open http://www.amazon.com
     When Click the cart
     Then Your Amazon Cart is empty is visible

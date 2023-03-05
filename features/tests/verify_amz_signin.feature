@@ -2,8 +2,14 @@
 Feature: verify sign in amazon.com
   # Enter feature description here
 
-  Scenario: amazon sign in clicking on return and order
-    Given Open https://www.amazon.com
-    When Click Orders
-    Then Sign In header is visible
-    And email input field is present
+#  Scenario: amazon sign in clicking on return and order
+#    Given Open https://www.amazon.com
+#    When Click Orders
+#    Then Sign In header is visible
+#    And email input field is present
+
+  Scenario: Sign in page can be opened from Sign in
+    Given Open Amazon page
+    When Click Sign in from popup
+    Then Verify Sin in page
+
