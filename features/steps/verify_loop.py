@@ -10,8 +10,12 @@ INPUT_PRODUCT = (By.CSS_SELECTOR, "input#twotabsearchtextbox")
 SEARCH_BUTTON = (By.CSS_SELECTOR, "input#nav-search-submit-button")
 PRODUCT_RESULT = (By.CSS_SELECTOR, "img.s-image")
 #PRODUCT_RESULT = (By.CSS_SELECTOR, ".a-color-state.a-text-bold")
+RESULT_PRODUCTS = (By.CSS_SELECTOR, "div.s-card-container.s-overflow-hidden.aok-relative.puis-expand-height.puis-include-content-margin.puis.s-latency-cf-section.s-card-border")
 ALL_IMAGES = (By.CSS_SELECTOR, "span.rush-component.s-latency-cf-section  img.s-image")
 ALL_PRODUCTS_NAME = (By.CSS_SELECTOR, "span.rush-component.s-latency-cf-section h2 a")
+ALL_REVIEW = (By.CSS_SELECTOR, "span.a-icon-alt")
+ALL_PRICE = (By.CSS_SELECTOR, "span.a-price-whole")
+
 
 @given('Open Amazon product {product_id} page')
 #@given('Open Amazon product B096VQ1BQX page')
@@ -24,7 +28,7 @@ def click_each_color(context):
     context.driver.find_element(*COLOR_OPTIONS).click()
 
     all_color_options = context.driver.find_elements(*COLOR_OPTIONS)
-#    print(f'{all_color_options}')
+    print(f'{all_color_options}')
 
     expected_selected_colors = ['1577 Blue', '1588 Black', '2126 Blue', '2127 Blue']
     actual_selected_colors = []
@@ -47,10 +51,23 @@ def search_product(context):
 @then('Verify correct product name and image')
 def verify_name_image(context):
     context.driver.wait.until(EC.presence_of_element_located(PRODUCT_RESULT))
+#Approach1:
 #    context.driver.get('https://www.amazon.com/s?k=coffee+maker&crid=2AKCT6PZFGAZO&sprefix=%2Caps%2C620&ref=nb_sb_ss_recent_1_0_recent')
-    all_images = context.driver.find_elements(*ALL_IMAGES)
+#    all_images = context.driver.find_elements(*ALL_IMAGES)
 #    print(f'all image: {all_images}')
-    all_products_name = context.driver.find_elements(*ALL_PRODUCTS_NAME)
+#    all_products_name = context.driver.find_elements(*ALL_PRODUCTS_NAME)
 #    print(f'all products_name: {all_products_name}')
-
-    assert len(all_images) == len(all_products_name), f'Count of images :{len(all_images)} Count of products_name : {len(all_products_name)}'
+#
+#    assert len(all_images) == len(all_products_name), f'Count of images :{len(all_images)} Count of products_name : {len(all_products_name)}'
+#
+# Approach2:
+    result_products = context.driver.find_elements(*RESULT_PRODUCTS)
+#    print(result_products)
+    for product in result_products:
+#        print(RESULT_PRODUCTS)
+        assert product.find_element(*ALL_IMAGES).is_displayed(), "Missing product image"
+#        print(product.find_element(*ALL_PRODUCTS_NAME).text)
+        assert product.find_element(*ALL_PRODUCTS_NAME).text, "Missing product name"
+#        assert product.find_element(*ALL_REVIEW).text, "Missing review"
+        assert product.find_element(*ALL_PRICE).text, "Missing price"
+#        print(product.find_element(*ALL_PRICE).text)

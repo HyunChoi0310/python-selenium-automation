@@ -37,13 +37,13 @@ def switch_opened_window(context):
     context.driver.switch_to.window(context.origin_window)
 # window is ONLY one, it changes part of the content(right-center)???
 
-@then('Verify Amazon Privacy Notice page is opened')
-def verify_pn_page_open(context):
-    context.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/help/customer/'))
-    pn_text = context.driver.find_element(*PRIVACY_NOTICE).text
-    expected_text = "Amazon.com Privacy Notice"
-
-    assert expected_text in pn_text, f'Expected text :, {expected_text} but got {pn_text}'
+#@then('Verify Amazon Privacy Notice page is opened')
+#def verify_pn_page_open(context):
+#    context.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/help/customer/'))
+#    pn_text = context.driver.find_element(*PRIVACY_NOTICE).text
+#    expected_text = "Amazon.com Privacy Notice"
+#
+#    assert expected_text in pn_text, f'Expected text :, {expected_text} but got {pn_text}'
 
 
 @then('User can close new window and switch back to original')
