@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 class Page:
 
@@ -12,6 +13,10 @@ class Page:
         self.driver.find_element(*locator).click()
 
     def find_element(self, *locator):
+        return self.driver.find_element(*locator)
+
+    def wait_for_element_appear(self, *locator):
+        self.driver.wait.until(EC.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     def input_text(self, text, *locator):

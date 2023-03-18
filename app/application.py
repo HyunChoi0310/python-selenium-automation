@@ -4,6 +4,7 @@ from pages.search_result_page import SearchResultPage
 from pages.click_page import ClickPage
 from pages.store_page import StorePage
 from pages.base_page import Page
+from pages.cart_page import CartPage
 
 class Application:
 
@@ -15,3 +16,4 @@ class Application:
         self.click_page = ClickPage(self.driver)
         self.store_page = StorePage(self.driver)
         self.base_page = Page(self.driver)
+        self.cart_page = CartPage(self.driver)
