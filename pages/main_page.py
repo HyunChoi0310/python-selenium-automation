@@ -1,8 +1,10 @@
 from pages.base_page import Page
+from support.logger import MyListener, logger
 
 class MainPage(Page):
 
     def open_main(self):
+        logger.info(f'Open url: http://www.amazon.com/')
         self.open_url('http://www.amazon.com/')
 
     def open_product(self):

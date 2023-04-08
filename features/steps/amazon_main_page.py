@@ -23,7 +23,6 @@ def amazon_input_search(context, text):
 def amazon_click_btn(context):
     context.app.header.click_search()
 
-
 @then('verify that text {expected_text} is shown')
 def amazon_verify_result(context, expected_text):
     context.app.search_result_page.verify_search_result(expected_text)
@@ -73,8 +72,7 @@ def amazon_store_product_count(context):
 def click_no_popup(context):
     context.app.click_page.click_popup_no_thank()
     sleep(4)
-    context.app.click_page.click_popup_x_mark()
-    sleep(4)
+    context.app.click_page.click_popup_x_mark()    sleep(4)
 
 
 @then('Click go to cart')

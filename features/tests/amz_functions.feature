@@ -6,13 +6,13 @@ Feature: Create Test Case for functions on Amazon
     When Input text table
     When Click on search button
     Then verify that text "table" is shown
-
+@smoke
  Scenario: Logged out user sees Sign in page when clicking Orders
     Given Open Amazon page
     When Click Amazon Orders link
     Then Verify Sign in page is opened
-
- Scenario: 'Your Amazon Cart is empty' shown if no product added
+@smoke
+ Scenario: 'Your Amazon Cart is empty' shown if no product addedpip install behave
     Given Open Amazon page
     When Click on cart icon
     Then Verify Your Amazon Cart is empty text present
